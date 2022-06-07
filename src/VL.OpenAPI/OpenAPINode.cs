@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using VL.Core;
+using RestSharp;
 
 namespace VL.OpenAPI
 {
@@ -9,6 +10,9 @@ namespace VL.OpenAPI
         readonly OpenAPINodeDescription description;
         readonly Pin resultPin;
         readonly Pin runPin;
+
+        private RestClient client;
+        private RestRequest request;
 
         // This is where we'll run the queries to the Directus instance
 
@@ -20,6 +24,12 @@ namespace VL.OpenAPI
 
             resultPin = Outputs.FirstOrDefault(o => o.Name == "Result");
             runPin = Inputs.LastOrDefault();
+
+            // Create RestClient & RestRequest
+            client = new RestClient(description.FEndpoint + description.FPath);
+            Method method = new Method();
+            bool meth = Enum.TryParse<Method>(description.FOperation.Key.ToString(), out method);
+            request = new RestRequest("", method);
         }
 
         public IVLNodeDescription NodeDescription => description;
@@ -33,9 +43,14 @@ namespace VL.OpenAPI
             if (runPin is null || !(bool)runPin.Value)
                 return;
 
+            // Console debug
             Console.WriteLine("======");
             Console.WriteLine("HTTP method is " + description.FOperation.Key);
             Console.WriteLine("Path is " + description.FPath);
+
+            var response = client.Execute(request);
+
+            resultPin.Value = response.Content;
         }
 
         public void Dispose()

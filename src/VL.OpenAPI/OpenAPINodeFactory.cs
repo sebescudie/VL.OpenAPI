@@ -34,8 +34,11 @@ namespace VL.OpenAPI
                 {
                     Console.WriteLine(String.Format("Found {0}", file));
 
-                    // var endpoint = File.ReadAllText(file);
-                    var endpoint = "http://localhost:8055/server/specs/oas?access_token=AYGr6sCTk6lH4N2F-N1TcAi2R6Sw-FJB";
+                    var endpoint = File.ReadAllText(file);
+
+                    // Extract domain and port
+                    Uri uri = new Uri(endpoint);
+                    string hostname = uri.ToString().Replace(uri.PathAndQuery, "");
 
                     // Query the OpenAPI schema
                     var client = new RestClient(endpoint);
@@ -48,12 +51,11 @@ namespace VL.OpenAPI
                     // Iterate over the paths
                     foreach (var path in openApiDocument.Paths)
                     {
+                        // path.Key is the actual path of the request
                         foreach(var operation in path.Value.Operations)
                         {
                             // Category is hardcoded for now
-                            // We path the key as well to get the actual URL
-                            // How do we retrieve the HTTP method from the spec?
-                            builder.Add(new OpenAPINodeDescription(this, "OpenAPI", path.Key, operation));
+                            builder.Add(new OpenAPINodeDescription(this, "OpenAPI", hostname, path.Key, operation));
                         }
                     }
                 }
