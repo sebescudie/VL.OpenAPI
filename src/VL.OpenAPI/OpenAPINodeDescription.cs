@@ -49,6 +49,13 @@ namespace VL.OpenAPI
                     GetTypeDefaultAndDescription(parameter, ref type, ref dflt, ref desc);
                     inputs.Add(new PinDescription(parameter.Name, type, dflt, desc));
                 }
+
+                // Adds the trigger pin
+                inputs.Add(new PinDescription("Execute", typeof(bool), false, "Sends a query as long as enabled"));
+
+                // For now let's just get the raw JSON response from Directus. Create a single string output pin
+                outputs.Add(new PinDescription("Result", typeof(string),"", "The raw string response"));
+
                 FInitialized = true;
             }
             catch (Exception ex)

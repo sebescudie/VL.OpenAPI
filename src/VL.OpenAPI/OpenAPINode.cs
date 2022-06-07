@@ -30,6 +30,10 @@ namespace VL.OpenAPI
         public void Update()
         {
             // Execute the query here
+            if (runPin is null || !(bool)runPin.Value)
+                return;
+
+            var query = "";
         }
 
         public void Dispose()
