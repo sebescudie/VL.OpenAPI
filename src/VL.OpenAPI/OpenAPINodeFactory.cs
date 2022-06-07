@@ -37,6 +37,8 @@ namespace VL.OpenAPI
                     var endpoint = File.ReadAllText(file);
 
                     // Extract domain and port
+                    // We assume the openapi schema and resources are on the same domain/port
+                    // Should we?
                     Uri uri = new Uri(endpoint);
                     string hostname = uri.ToString().Replace(uri.PathAndQuery, "");
 
