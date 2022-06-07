@@ -15,13 +15,6 @@
       </p:NodeReference>
       <Patch Id="TFcDCifoEDUN1Lz38Pn1kh">
         <Canvas Id="Ses9Nzf5H8hNF1hnTsieyB" CanvasType="Group">
-          <Node Bounds="425,277" Id="IiD0HP5cSvTLY7h1vlfbnm">
-            <p:NodeReference LastCategoryFullName="OpenAPI" LastSymbolSource="VL.OpenAPI-Factory">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="OpenAPI" />
-              <Choice Kind="ProcessNode" Name="/extensions/interfaces" />
-            </p:NodeReference>
-          </Node>
           <Node Bounds="523,396" Id="IwlfTday20hLfc6EgjpHm1">
             <p:NodeReference LastCategoryFullName="OpenAPI" LastSymbolSource="VL.OpenAPI-Factory">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -29,6 +22,20 @@
             </p:NodeReference>
             <Pin Id="Lov0Y1RrUo0N3qHu5ibBtp" Name="fields" Kind="InputPin" />
             <Pin Id="Fb4RQ60LXf8Pl7gG8lCXlF" Name="meta" Kind="InputPin" />
+            <Pin Id="VMpdufeEhDqO7JxEBFKjIG" Name="Execute" Kind="InputPin" />
+            <Pin Id="U6TVJe6BJnaLh0O5v4wpPF" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="472,335,129,19" Id="NCCxSmVAqAMOQhFoplLaBS">
+            <p:NodeReference LastCategoryFullName="OpenAPI" LastSymbolSource="VL.OpenAPI-Factory">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="OpenAPI" />
+              <Choice Kind="ProcessNode" Name="updateSingleItemsColors" />
+            </p:NodeReference>
+            <Pin Id="DWPoNCgNmtuODYnv8YiRge" Name="fields" Kind="InputPin" />
+            <Pin Id="C7NXdJzPGT7ObI7M6g5gWK" Name="meta" Kind="InputPin" />
+            <Pin Id="GA8qwq9XocKNzVTjWXEDJF" Name="id" Kind="InputPin" />
+            <Pin Id="SzRxKn9Zyu2QVESCtfGLi5" Name="Execute" Kind="InputPin" />
+            <Pin Id="VRWsqxFTh4YMzGzB7yHOGs" Name="Result" Kind="OutputPin" />
           </Node>
         </Canvas>
         <Patch Id="FTSNVLlR8yNLy0XKoEvTcd" Name="Create" />
