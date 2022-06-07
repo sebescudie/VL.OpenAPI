@@ -50,8 +50,10 @@ namespace VL.OpenAPI
                     {
                         foreach(var operation in path.Value.Operations)
                         {
-                            // OpenAPI is hardcoded for now
-                            builder.Add(new OpenAPINodeDescription(this, "OpenAPI", operation));
+                            // Category is hardcoded for now
+                            // We path the key as well to get the actual URL
+                            // How do we retrieve the HTTP method from the spec?
+                            builder.Add(new OpenAPINodeDescription(this, "OpenAPI", path.Key, operation));
                         }
                     }
                 }

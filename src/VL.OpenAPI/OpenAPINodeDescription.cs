@@ -22,13 +22,14 @@ namespace VL.OpenAPI
         List<PinDescription> inputs = new List<PinDescription>();
         List<PinDescription> outputs = new List<PinDescription>();
 
-        public OpenAPINodeDescription(IVLNodeDescriptionFactory factory, string category, KeyValuePair<OperationType,OpenApiOperation> operation)
+        public OpenAPINodeDescription(IVLNodeDescriptionFactory factory, string category, string path, KeyValuePair<OperationType,OpenApiOperation> operation)
         {
             Factory = factory;
             Name = operation.Value.OperationId;
             FCategory = category;
             FSummary = operation.Value.Description;
             FOperation = operation;
+            FPath = path;
         }
 
         void Init()
@@ -87,7 +88,8 @@ namespace VL.OpenAPI
                 }
             }
         }
-        private KeyValuePair<OperationType, OpenApiOperation> FOperation;
+        public string FPath;
+        public KeyValuePair<OperationType, OpenApiOperation> FOperation;
         public IVLNodeDescriptionFactory Factory { get; }
         public string Name { get; }
         public string Category => "OpenAPI";

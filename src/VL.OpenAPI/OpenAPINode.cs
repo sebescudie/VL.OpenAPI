@@ -33,7 +33,9 @@ namespace VL.OpenAPI
             if (runPin is null || !(bool)runPin.Value)
                 return;
 
-            var query = "";
+            Console.WriteLine("======");
+            Console.WriteLine("HTTP method is " + description.FOperation.Key);
+            Console.WriteLine("Path is " + description.FPath);
         }
 
         public void Dispose()
