@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="NhijQwk9y0QOPJgLonG3uG" LanguageVersion="2021.4.9.982" Version="0.128">
+  <NugetDependency Id="Sc3MDzTvSUQLjW7acx7vkC" Location="VL.CoreLib" Version="2021.4.9" />
+  <Patch Id="IjVkvRUuGf8MakfQZnbTLx">
+    <Canvas Id="KU2JbiPSwRGMMf0rgjPGVr" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="Ueqdk6KkEF8MzpVC7TfDLZ">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="QPyqbWT0IjlLmq9IZaYFPL">
+        <Canvas Id="NmAx55TS5dcOfhcyvGyFbQ" CanvasType="Group" />
+        <Patch Id="VOe5rwfqN6nPtW6f5qEUKU" Name="Create" />
+        <Patch Id="SFVt4tGNS6fQHJUE8iTpBn" Name="Update" />
+        <ProcessDefinition Id="VTkdJvlVLfXMF0Zeorlg0f">
+          <Fragment Id="Hms2IXRgbjvLarUmXotBXQ" Patch="VOe5rwfqN6nPtW6f5qEUKU" Enabled="true" />
+          <Fragment Id="DDxpfebvRJXM2ZziSa6Xcb" Patch="SFVt4tGNS6fQHJUE8iTpBn" Enabled="true" />
+        </ProcessDefinition>
+      </Patch>
+    </Node>
+  </Patch>
+  <PlatformDependency Id="HndzPjtxD6CNmV3pFKVCuf" Location="./lib/netstandard2.0/VL.OpenAPI.dll" IsForward="true" />
+  <NodeFactoryDependency Id="CPT6YCHdpy4PrpfmoXoNYK" Location="VL.OpenAPI-Factory" IsForward="true" />
+</Document>

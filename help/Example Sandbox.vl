@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="P3XgOMMgFeoLEEqvn5Yuny" LanguageVersion="2021.4.9.982" Version="0.128">
+  <NugetDependency Id="DNdhaiLpXDOMOU2PaouJIb" Location="VL.CoreLib" Version="2021.4.9" />
+  <Patch Id="MtAyDYfWePwLWLyi9mr7hG">
+    <Canvas Id="LpuxYxH1srCLBm1IIA2eoi" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="Ho5hs3a4iqXN5VL008D2Ba">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="TFcDCifoEDUN1Lz38Pn1kh">
+        <Canvas Id="Ses9Nzf5H8hNF1hnTsieyB" CanvasType="Group">
+          <Node Bounds="425,277" Id="IiD0HP5cSvTLY7h1vlfbnm">
+            <p:NodeReference LastCategoryFullName="OpenAPI" LastSymbolSource="VL.OpenAPI-Factory">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="OpenAPI" />
+              <Choice Kind="ProcessNode" Name="/extensions/interfaces" />
+            </p:NodeReference>
+          </Node>
+          <Node Bounds="523,396" Id="IwlfTday20hLfc6EgjpHm1">
+            <p:NodeReference LastCategoryFullName="OpenAPI" LastSymbolSource="VL.OpenAPI-Factory">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessNode" Name="createFolder" />
+            </p:NodeReference>
+            <Pin Id="Lov0Y1RrUo0N3qHu5ibBtp" Name="fields" Kind="InputPin" />
+            <Pin Id="Fb4RQ60LXf8Pl7gG8lCXlF" Name="meta" Kind="InputPin" />
+          </Node>
+        </Canvas>
+        <Patch Id="FTSNVLlR8yNLy0XKoEvTcd" Name="Create" />
+        <Patch Id="HgLdDyRIx0dMC4YWggq0AW" Name="Update" />
+        <ProcessDefinition Id="VhlKQa9Y9W2PUqSeX6aGrN">
+          <Fragment Id="LkCRLzCVkqwMp4f0HqEAo4" Patch="FTSNVLlR8yNLy0XKoEvTcd" Enabled="true" />
+          <Fragment Id="OYOse357nFiMqXt6dtKw00" Patch="HgLdDyRIx0dMC4YWggq0AW" Enabled="true" />
+        </ProcessDefinition>
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="B0N3shNru8oOdWpKq1MIuH" Location="VL.OpenAPI" Version="0.0.0.0" />
+</Document>

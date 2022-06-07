@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.OpenAPI.ConsoleSandbox", "..\VL.OpenAPI.ConsoleSandbox\VL.OpenAPI.ConsoleSandbox.csproj", "{19964642-DEC4-4429-B2F1-6D10520514AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.OpenAPI", "VL.OpenAPI.csproj", "{848E2E14-5C36-49AF-A821-10D62763EF7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19964642-DEC4-4429-B2F1-6D10520514AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19964642-DEC4-4429-B2F1-6D10520514AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19964642-DEC4-4429-B2F1-6D10520514AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19964642-DEC4-4429-B2F1-6D10520514AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{848E2E14-5C36-49AF-A821-10D62763EF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{848E2E14-5C36-49AF-A821-10D62763EF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{848E2E14-5C36-49AF-A821-10D62763EF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{848E2E14-5C36-49AF-A821-10D62763EF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BC64922-78B4-4FCC-9722-FED7ACBF56C7}
+	EndGlobalSection
+EndGlobal
