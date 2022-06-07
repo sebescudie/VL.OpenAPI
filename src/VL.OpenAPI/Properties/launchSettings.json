@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "2021.4.9": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\vvvv\\vvvv_gamma_2021.4.9\\vvvv.exe",
+      "commandLineArgs": "-o \"Example Sandbox.vl\" --package-repositories \"D:\\Documents\\dev\\libraries\"",
+      "workingDirectory": "..\\..\\help"
+    }
+  }
+}
