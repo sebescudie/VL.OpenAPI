@@ -28,15 +28,17 @@ _Automagically create nodes from an OpenAPI description._
 
 ## Usage
 
-Next to your patch, create an `openAPI` . In that folder, create individual text files for each openAPI thing you want to create nodes from. In that text file, just paste the URL pointing to the openAPI schema. An example of that can be found in the help folder.
-
-Later we should properly parse one endpoint per line, or even something like
+Next to your patch, create an `openAPI` folder. In that folder, create an `openapi.txt` document in which you'll list all the OpenAPI things you wanna generate nodes from. This file should be structured as follows :
 
 ```
-http://url.to.the.openapi.thing CollectionName
+ProjectName, http://url.to.the.openapi.thing, APIKey
 ```
 
-Because in the case of Directus, we don't have any information about the project spec in the OpenAPI schema. Like that we could create propper categories per project.
+- `ProjectName` is an arbitrary string used for you to identify the project. This will be used as a category in the node browser
+
+- URL to the OpenAPI thing is an endpoint that points to the OpenAPI JSON spec
+
+- `APIKey` is the API key you're using to interact with the resource. For now, the plugin only supports query parameter based authentication
 
 ## Stuff to do
 
