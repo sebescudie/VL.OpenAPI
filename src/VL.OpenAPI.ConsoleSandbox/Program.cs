@@ -10,11 +10,14 @@ var stream = await httpClient.GetStreamAsync("");
 OpenApiDiagnostic diagnostic = new OpenApiDiagnostic();
 
 // Read V3 as YAML
-var openApiDocument = new OpenApiStreamReader().Read(stream, out diagnostic);
+var doc = new OpenApiStreamReader().Read(stream, out diagnostic);
 
-foreach(var thing in openApiDocument.Paths)
+foreach(var scheme in doc.Components.SecuritySchemes)
 {
-    Console.WriteLine(thing.Key);
+    Console.WriteLine(scheme.Key);
+    Console.WriteLine("Name : " + scheme.Value.Name);
+    Console.WriteLine("In : " + scheme.Value.In);
+    Console.WriteLine("Type : " + scheme.Value.Type);
 }
 
 Console.ReadLine();

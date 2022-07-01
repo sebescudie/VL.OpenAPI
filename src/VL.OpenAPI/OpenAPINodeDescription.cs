@@ -18,11 +18,13 @@ namespace VL.OpenAPI
         string FSummary;
         string FCategory;
 
+        private string authParameterName;
+
         // Inputs and outputs
         List<PinDescription> inputs = new List<PinDescription>();
         List<PinDescription> outputs = new List<PinDescription>();
 
-        public OpenAPINodeDescription(IVLNodeDescriptionFactory factory, string category, string endpoint, string path, KeyValuePair<OperationType,OpenApiOperation> operation)
+        public OpenAPINodeDescription(IVLNodeDescriptionFactory factory, string category, string endpoint, string path, KeyValuePair<OperationType,OpenApiOperation> operation, IDictionary<string, OpenApiSecurityScheme> securitySchemes, string apiKey)
         {
             Factory = factory;
             Name = operation.Value.OperationId;
@@ -31,6 +33,8 @@ namespace VL.OpenAPI
             FOperation = operation;
             FPath = path;
             FEndpoint = endpoint;
+            FSecuritySchemes = securitySchemes;
+            FAPIKey = apiKey;
         }
 
         void Init()
@@ -92,6 +96,8 @@ namespace VL.OpenAPI
         public string FEndpoint;
         public string FPath;
         public KeyValuePair<OperationType, OpenApiOperation> FOperation;
+        public IDictionary<string, OpenApiSecurityScheme> FSecuritySchemes;
+        public string FAPIKey;
         public IVLNodeDescriptionFactory Factory { get; }
         public string Name { get; }
         public string Category => FCategory;

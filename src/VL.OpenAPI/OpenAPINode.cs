@@ -2,6 +2,7 @@
 using System.Linq;
 using VL.Core;
 using RestSharp;
+using Microsoft.OpenApi.Models;
 
 namespace VL.OpenAPI
 {
@@ -13,6 +14,8 @@ namespace VL.OpenAPI
 
         private RestClient client;
         private RestRequest request;
+
+        private string authParameterName;
 
         // This is where we'll run the queries to the Directus instance
 
@@ -30,6 +33,18 @@ namespace VL.OpenAPI
             Method method = new Method();
             bool meth = Enum.TryParse<Method>(description.FOperation.Key.ToString(), out method);
             request = new RestRequest("", method);
+
+            // Look for authentication stuff
+            try
+            {
+                authParameterName = description.FSecuritySchemes.FirstOrDefault(x => x.Value.In == ParameterLocation.Query).Value.Name;
+                request.AddOrUpdateParameter(authParameterName, description.FAPIKey);
+            }
+            catch (Exception ex)
+            {
+                authParameterName = "";
+                Console.WriteLine("No query-based authentication found");
+            }
         }
 
         public IVLNodeDescription NodeDescription => description;
@@ -42,11 +57,6 @@ namespace VL.OpenAPI
             // Execute the query here
             if (runPin is null || !(bool)runPin.Value)
                 return;
-
-            // Console debug
-            Console.WriteLine("======");
-            Console.WriteLine("HTTP method is " + description.FOperation.Key);
-            Console.WriteLine("Path is " + description.FPath);
 
             var response = client.Execute(request);
 

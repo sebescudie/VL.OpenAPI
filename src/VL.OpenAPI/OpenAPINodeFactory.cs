@@ -67,14 +67,16 @@ namespace VL.OpenAPI
                     // Parse schema
                     var openApiDocument = new OpenApiStringReader().Read(response, out diagnostic);
 
+                    // Look for the authentication section
+                    var securitySchemes = openApiDocument.Components.SecuritySchemes;
+
                     // Iterate over the paths
                     foreach (var path in openApiDocument.Paths)
                     {
                         // path.Key is the actual path of the request
                         foreach (var operation in path.Value.Operations)
                         {
-                            // Category is hardcoded for now
-                            builder.Add(new OpenAPINodeDescription(this, projectName, hostname, path.Key, operation));
+                            builder.Add(new OpenAPINodeDescription(this, projectName, hostname, path.Key, operation, securitySchemes, apiKey));
                         }
                     }
                 }
