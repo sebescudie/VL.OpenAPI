@@ -3,6 +3,8 @@ using System.Linq;
 using VL.Core;
 using RestSharp;
 using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace VL.OpenAPI
 {
@@ -57,6 +59,30 @@ namespace VL.OpenAPI
             // Execute the query here
             if (runPin is null || !(bool)runPin.Value)
                 return;
+
+            // Clear all params
+            // Is it better to do that or just create a new request?
+            foreach(var param in request.Parameters)
+            {
+                request.RemoveParameter(param);
+            }
+
+            // Look for pins that actually have a value and add them as params
+            foreach(var input in Inputs.Cast<Pin>().SkipLast(1))
+            {
+                if (input.Type == typeof(IEnumerable<string>) && ((int)typeof(ICollection).GetProperty("Count").GetValue(input.Value, null)) > 0)
+                {
+                    request.AddOrUpdateParameter(input.Name, string.Join(",", (IEnumerable<string>)input.Value));
+                }
+                else if(input.Type == typeof(string) && !(string.IsNullOrEmpty(input.Value as string)))
+                {
+                    request.AddOrUpdateParameter(input.Name, (string)input.Value);
+                }
+                else if(input.Type == typeof(bool))
+                {
+                    //
+                }
+            }
 
             var response = client.Execute(request);
 
