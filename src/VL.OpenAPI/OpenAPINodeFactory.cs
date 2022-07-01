@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using System;
 using System.Threading;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace VL.OpenAPI
 {
@@ -13,9 +14,13 @@ namespace VL.OpenAPI
     {
         const string openAPIsubdir = "openAPI";
         const string identifier = "VL.OpenAPI-Factory";
+        const string filename = "openapi.txt";
 
         public readonly string Directory;
         public readonly string DirectoryToWatch;
+
+        // A regex to remove whitespacce from strings
+        private static readonly Regex sWhitespace = new Regex(@"\s+");
 
         // The node factory cache will invalidate in case a cached factory or one of its nodes invalidates
         private readonly NodeFactoryCache factoryCache = new NodeFactoryCache();
@@ -29,22 +34,34 @@ namespace VL.OpenAPI
 
             if(directory != null)
             {
-                // Iterate over all OpenAPI files
-                foreach(var file in System.IO.Directory.GetFiles(directory, "*.txt"))
+                // Make up file name
+                var filePath = Path.Combine(directory, filename);
+
+                // Iterate over lines of the file
+                foreach(var line in File.ReadLines(filePath))
                 {
-                    Console.WriteLine(String.Format("Found {0}", file));
+                    // Split at coma, we expect the following format :
+                    // [0] = Project name
+                    // [1] = OpenAPI document URL
+                    // [2] = API key
+                    var elements = line.Split(',');
 
-                    var endpoint = File.ReadAllText(file);
+                    var projectName = sWhitespace.Replace(elements[0], "");
+                    var endpoint = sWhitespace.Replace(elements[1], "");
+                    var apiKey = sWhitespace.Replace(elements[2], "");
 
+                    Console.WriteLine(String.Format("Found project {0}", projectName));
+                    
                     // Extract domain and port
                     // We assume the openapi schema and resources are on the same domain/port
                     // Should we?
                     Uri uri = new Uri(endpoint);
                     string hostname = uri.ToString().Replace(uri.PathAndQuery, "");
 
+
                     // Query the OpenAPI schema
                     var client = new RestClient(endpoint);
-                    var response = client.GetAsync(new RestRequest(),new CancellationToken()).GetAwaiter().GetResult().Content;
+                    var response = client.GetAsync(new RestRequest(), new CancellationToken()).GetAwaiter().GetResult().Content;
                     OpenApiDiagnostic diagnostic = new OpenApiDiagnostic();
 
                     // Parse schema
@@ -54,10 +71,10 @@ namespace VL.OpenAPI
                     foreach (var path in openApiDocument.Paths)
                     {
                         // path.Key is the actual path of the request
-                        foreach(var operation in path.Value.Operations)
+                        foreach (var operation in path.Value.Operations)
                         {
                             // Category is hardcoded for now
-                            builder.Add(new OpenAPINodeDescription(this, "OpenAPI", hostname, path.Key, operation));
+                            builder.Add(new OpenAPINodeDescription(this, projectName, hostname, path.Key, operation));
                         }
                     }
                 }

@@ -94,7 +94,7 @@ namespace VL.OpenAPI
         public KeyValuePair<OperationType, OpenApiOperation> FOperation;
         public IVLNodeDescriptionFactory Factory { get; }
         public string Name { get; }
-        public string Category => "OpenAPI";
+        public string Category => FCategory;
         public bool Fragmented => false;
         public IReadOnlyList<IVLPinDescription> Inputs
         {
