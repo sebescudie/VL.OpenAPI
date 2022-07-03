@@ -27,7 +27,7 @@ namespace VL.OpenAPI
         public OpenAPINodeDescription(IVLNodeDescriptionFactory factory, string category, string endpoint, string path, KeyValuePair<OperationType,OpenApiOperation> operation, IDictionary<string, OpenApiSecurityScheme> securitySchemes, string apiKey)
         {
             Factory = factory;
-            Name = operation.Value.OperationId;
+            Name = Utils.ToPascalCase(operation.Value.OperationId);
             FCategory = category;
             FSummary = operation.Value.Description;
             FOperation = operation;

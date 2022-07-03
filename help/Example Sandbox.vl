@@ -15,23 +15,7 @@
       </p:NodeReference>
       <Patch Id="TFcDCifoEDUN1Lz38Pn1kh">
         <Canvas Id="Ses9Nzf5H8hNF1hnTsieyB" CanvasType="Group">
-          <Node Bounds="410,433" Id="KIlGqU6AhZaLGXLn1IUPgK">
-            <p:NodeReference LastCategoryFullName="LocalDirectus" LastSymbolSource="VL.OpenAPI-Factory">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessNode" Name="readItemsColors" />
-            </p:NodeReference>
-            <Pin Id="Ngrq59ak7ZxQUlgB0UjmJt" Name="Fields" Kind="InputPin" />
-            <Pin Id="PyAahhSUCjrMmKk3Nsa0SE" Name="Limit" Kind="InputPin" />
-            <Pin Id="IUvCYoaw7RhNdRI8lHRWCQ" Name="Meta" Kind="InputPin" />
-            <Pin Id="CPnRJ4ubEvMMR6HNcgI7yX" Name="Offset" Kind="InputPin" />
-            <Pin Id="TX7S1zmdxAvOfzIgPcwBjw" Name="Sort" Kind="InputPin" />
-            <Pin Id="Hi2SmcXhaGHNbQ07uH8cbl" Name="Filter" Kind="InputPin" />
-            <Pin Id="HOMprvCRgspN2wRSnQZkKT" Name="Search" Kind="InputPin" />
-            <Pin Id="NL6NP5x6oJYNnbVuuC3pBk" Name="Execute" Kind="InputPin" />
-            <Pin Id="Bk4EJw1Rg0mLTTvGQiqT0W" Name="Result" Kind="OutputPin" />
-          </Node>
-          <Pad Id="LyVAqoWyVO4P4oHcegFD2J" Comment="" Bounds="412,494,374,239" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="RaVajx5KAvLObyM9CbHb7a" Comment="Execute" Bounds="573,390,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+          <Pad Id="RaVajx5KAvLObyM9CbHb7a" Comment="Execute" Bounds="602,415,35,35" ShowValueBox="true" isIOBox="true" Value="False">
             <p:TypeAnnotation>
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
               <FullNameCategoryReference ID="Primitive" />
@@ -40,7 +24,24 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="UypOIJZ7PrENCg3kgHuyNF" Comment="fields" Bounds="412,370,35,34" ShowValueBox="true" isIOBox="true">
+          <Node Bounds="460,466,145,19" Id="C0oiKBUQcbwMgQUXvvZBOC">
+            <p:NodeReference LastCategoryFullName="LocalDirectus" LastSymbolSource="VL.OpenAPI-Factory">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="LocalDirectus" />
+              <Choice Kind="ProcessNode" Name="ReadItemsColors" />
+            </p:NodeReference>
+            <Pin Id="RS5Vd88191gLoxcSJlR2m1" Name="Fields" Kind="InputPin" />
+            <Pin Id="KyGDosyT51AOUgYB0fHxUc" Name="Limit" Kind="InputPin" />
+            <Pin Id="CawXQVoRAB5OVBDjUuY3U5" Name="Meta" Kind="InputPin" />
+            <Pin Id="CfkojmcJtM2Mhoba81ZuFh" Name="Offset" Kind="InputPin" />
+            <Pin Id="S7ajKETuhWrPJWGUtVFOxb" Name="Sort" Kind="InputPin" />
+            <Pin Id="GhhHoI4isXUOO02XLvnnXj" Name="Filter" Kind="InputPin" />
+            <Pin Id="J4cxECyVFCGMi4U3OuCFFL" Name="Search" Kind="InputPin" />
+            <Pin Id="Ct33jmKGNNDNPQ8tKTp5zI" Name="Execute" Kind="InputPin" />
+            <Pin Id="UO7ekxmg0yaO6kA3socivV" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Va8rb7ByvuGPrk5uCAP0iG" Comment="" Bounds="462,519,180,137" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="DReJCeSt3aoLfe7edKgCEG" Comment="Fields" Bounds="465,395,35,17" ShowValueBox="true" isIOBox="true">
             <p:TypeAnnotation LastCategoryFullName="Collections" LastSymbolSource="VL.Collections.vl">
               <Choice Kind="TypeFlag" Name="Spread" />
               <p:TypeArguments>
@@ -49,9 +50,7 @@
                 </TypeReference>
               </p:TypeArguments>
             </p:TypeAnnotation>
-            <p:Value>
-              <Item>name</Item>
-            </p:Value>
+            <p:Value />
           </Pad>
         </Canvas>
         <Patch Id="FTSNVLlR8yNLy0XKoEvTcd" Name="Create" />
@@ -60,9 +59,9 @@
           <Fragment Id="LkCRLzCVkqwMp4f0HqEAo4" Patch="FTSNVLlR8yNLy0XKoEvTcd" Enabled="true" />
           <Fragment Id="OYOse357nFiMqXt6dtKw00" Patch="HgLdDyRIx0dMC4YWggq0AW" Enabled="true" />
         </ProcessDefinition>
-        <Link Id="PQ2i0ao1NOeQUoCoHngZiX" Ids="Bk4EJw1Rg0mLTTvGQiqT0W,LyVAqoWyVO4P4oHcegFD2J" />
-        <Link Id="GSpMQ3jhaCeQbjt9DR1nL1" Ids="RaVajx5KAvLObyM9CbHb7a,NL6NP5x6oJYNnbVuuC3pBk" />
-        <Link Id="ERETmFakZUpLr5rgxzEsTH" Ids="UypOIJZ7PrENCg3kgHuyNF,Ngrq59ak7ZxQUlgB0UjmJt" />
+        <Link Id="BRhWOlmHbDTN6Id5R50DhW" Ids="RaVajx5KAvLObyM9CbHb7a,Ct33jmKGNNDNPQ8tKTp5zI" />
+        <Link Id="AHCEKxizWEXPJyGAF75BBz" Ids="UO7ekxmg0yaO6kA3socivV,Va8rb7ByvuGPrk5uCAP0iG" />
+        <Link Id="EgXHd4jxjN1MsYOSosPirh" Ids="DReJCeSt3aoLfe7edKgCEG,RS5Vd88191gLoxcSJlR2m1" />
       </Patch>
     </Node>
   </Patch>
