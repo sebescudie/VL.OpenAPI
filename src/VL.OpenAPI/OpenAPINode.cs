@@ -41,6 +41,7 @@ namespace VL.OpenAPI
             {
                 authParameterName = description.FSecuritySchemes.FirstOrDefault(x => x.Value.In == ParameterLocation.Query).Value.Name;
                 request.AddOrUpdateParameter(authParameterName, description.FAPIKey);
+                Console.WriteLine("Added auth parameter " + authParameterName);
             }
             catch (Exception ex)
             {
@@ -56,13 +57,12 @@ namespace VL.OpenAPI
 
         public void Update()
         {
-            // Execute the query here
             if (runPin is null || !(bool)runPin.Value)
                 return;
 
-            // Clear all params
+            // Clear all params except auth!
             // Is it better to do that or just create a new request?
-            foreach(var param in request.Parameters)
+            foreach(var param in request.Parameters.Where(x => x.Name != authParameterName))
             {
                 request.RemoveParameter(param);
             }
@@ -70,6 +70,7 @@ namespace VL.OpenAPI
             // Look for pins that actually have a value and add them as params
             foreach(var input in Inputs.Cast<Pin>().SkipLast(1))
             {
+                // That looks a bit convoluted
                 if (input.Type == typeof(IEnumerable<string>) && ((int)typeof(ICollection).GetProperty("Count").GetValue(input.Value, null)) > 0)
                 {
                     request.AddOrUpdateParameter(input.Name, string.Join(",", (IEnumerable<string>)input.Value));
@@ -80,7 +81,7 @@ namespace VL.OpenAPI
                 }
                 else if(input.Type == typeof(bool))
                 {
-                    //
+                    // TBD
                 }
             }
 
