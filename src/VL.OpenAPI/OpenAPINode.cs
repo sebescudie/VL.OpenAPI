@@ -24,8 +24,8 @@ namespace VL.OpenAPI
         public OpenAPINode(OpenAPINodeDescription description, NodeContext nodeContext) : base(nodeContext)
         {
             this.description = description;
-            Inputs = description.Inputs.Select(p => new Pin() { Name = p.Name, Type = p.Type, Value = p.DefaultValue }).ToArray();
-            Outputs = description.Outputs.Select(p => new Pin() { Name = p.Name, Type = p.Type, Value = p.DefaultValue }).ToArray();
+            Inputs = description.Inputs.Select(p => new Pin() { Name = p.Name, OriginalName = ((PinDescription)p).OriginalName, Type = p.Type, Value = p.DefaultValue }).ToArray();
+            Outputs = description.Outputs.Select(p => new Pin() { Name = p.Name, OriginalName = ((PinDescription)p).OriginalName, Type = p.Type, Value = p.DefaultValue }).ToArray();
 
             resultPin = Outputs.FirstOrDefault(o => o.Name == "Result");
             runPin = Inputs.LastOrDefault();
@@ -73,11 +73,11 @@ namespace VL.OpenAPI
                 // That looks a bit convoluted
                 if (input.Type == typeof(IEnumerable<string>) && ((int)typeof(ICollection).GetProperty("Count").GetValue(input.Value, null)) > 0)
                 {
-                    request.AddOrUpdateParameter(input.Name, string.Join(",", (IEnumerable<string>)input.Value));
+                    request.AddOrUpdateParameter(input.OriginalName, string.Join(",", (IEnumerable<string>)input.Value));
                 }
                 else if(input.Type == typeof(string) && !(string.IsNullOrEmpty(input.Value as string)))
                 {
-                    request.AddOrUpdateParameter(input.Name, (string)input.Value);
+                    request.AddOrUpdateParameter(input.OriginalName, (string)input.Value);
                 }
                 else if(input.Type == typeof(bool))
                 {
