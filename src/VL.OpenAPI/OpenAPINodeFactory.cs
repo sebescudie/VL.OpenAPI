@@ -61,7 +61,9 @@ namespace VL.OpenAPI
 
                     // Query the OpenAPI schema
                     var client = new RestClient(endpoint);
-                    var response = client.GetAsync(new RestRequest(), new CancellationToken()).GetAwaiter().GetResult().Content;
+                    // var response = client.GetAsync(new RestRequest(), new CancellationToken()).GetAwaiter().GetResult().Content;
+                    var response = client.Get(new RestRequest()).Content;
+                    
                     OpenApiDiagnostic diagnostic = new OpenApiDiagnostic();
 
                     // Parse schema

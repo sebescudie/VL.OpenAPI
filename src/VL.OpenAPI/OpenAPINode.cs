@@ -64,7 +64,7 @@ namespace VL.OpenAPI
             // Is it better to do that or just create a new request?
             foreach(var param in request.Parameters.Where(x => x.Name != authParameterName))
             {
-                request.RemoveParameter(param);
+                request.Parameters.Remove(param);
             }
 
             // Look for pins that actually have a value and add them as params
